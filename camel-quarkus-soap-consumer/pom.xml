@@ -27,7 +27,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>camel-quarkus-examples-rest-json</artifactId>
+    <artifactId>camel-quarkus-soap-consumer</artifactId>
     <name>Camel Quarkus :: Examples :: Rest Json</name>
     <description>Camel Quarkus Example :: Rest Json</description>
 
