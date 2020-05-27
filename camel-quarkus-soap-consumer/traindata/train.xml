@@ -1,0 +1,6 @@
+<train>
+	<train_id>1</train_id>
+	<track_id>2</track_id>
+	<station_from>Cairo</station_from>
+	<station_to>Alex</station_to>
+</train>
