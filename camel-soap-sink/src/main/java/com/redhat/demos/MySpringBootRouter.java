@@ -14,7 +14,7 @@ public class MySpringBootRouter extends RouteBuilder {
     @Override
     public void configure() {
         rest("/").post("xml").consumes("application/xml").to("log: XML Train Data Received").to("direct://myservice");
-        from("direct//myservice").to("activemq:traindata-xml?disableReplyTo=true");
+        from("direct://myservice").to("activemq:traindata-xml?disableReplyTo=true");
     }
 
 }
