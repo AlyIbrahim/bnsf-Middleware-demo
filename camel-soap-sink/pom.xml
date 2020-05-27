@@ -75,10 +75,18 @@
       <groupId>org.apache.camel.springboot</groupId>
       <artifactId>camel-servlet-starter</artifactId>
     </dependency>
-    <dependency>
+    <!-- <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-jms</artifactId>
-    </dependency>
+    </dependency> -->
+
+
+<dependency>
+  <groupId>org.apache.camel.springboot</groupId>
+  <artifactId>camel-jms-starter</artifactId>
+  <!-- use the same version as your Camel core version -->
+</dependency>
+
 
 <dependency>
   <groupId>org.apache.camel.springboot</groupId>
