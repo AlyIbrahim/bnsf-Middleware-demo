@@ -28,9 +28,9 @@ public class MySpringBootRouter extends RouteBuilder {
         jsonDataFormat.setPrettyPrint(true);
         
         from("amqp://traindata-xml")
-        // .unmarshal(xmlDataFormat)
+        .unmarshal(xmlDataFormat)
         // .to("log:Train Data from Queue ${body")
-        // .marshal(jsonDataFormat)
+        .marshal(jsonDataFormat)
         .to("log:Train data Transformed to JSON ${body}")
         .to("amqp://queue:traindata-json?disableReplyTo=true");
     }
