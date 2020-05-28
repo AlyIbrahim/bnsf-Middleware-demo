@@ -18,7 +18,7 @@ public class MySpringBootRouter extends RouteBuilder {
     @Override
     public void configure() {
         from("amqp://traindata-json")
-        .to("kafka:traindara-status");
+        .to("kafka:traindata-status");
     }
 
 }
