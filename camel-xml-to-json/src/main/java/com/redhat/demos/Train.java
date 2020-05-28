@@ -12,6 +12,7 @@ public class Train {
     int track_id;
     String station_from;
     String station_to;
+    Boolean status = false;
 
 
 	public int getTrain_id() {
@@ -37,6 +38,12 @@ public class Train {
 	}
 	public void setStation_to(String station_to) {
 		this.station_to = station_to;
+	}
+	public Boolean getStatus() {
+		return status;
+	}
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
     
 }

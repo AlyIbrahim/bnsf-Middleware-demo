@@ -22,13 +22,16 @@ public class MySpringBootRouter extends RouteBuilder {
         JaxbDataFormat xmlDataFormat = new JaxbDataFormat();
 		JAXBContext con = JAXBContext.newInstance(Train.class);
         xmlDataFormat.setContext(con);
+        xmlDataFormat.setPrettyPrint(true);
         
         JacksonDataFormat jsonDataFormat = new JacksonDataFormat(Train.class);
         jsonDataFormat.setPrettyPrint(true);
         
-        from("activemq:traindata-xml").unmarshal(xmlDataFormat).marshal(jsonDataFormat)
-        .log("Train data Transformed to JSON ${body}")
-        .to("activemq:queue:traindata-json?disableReplyTo=true");
+        from("amqp://traindata-xml").unmarshal(xmlDataFormat)
+        // .to("log:Train Data from Queue ${body")
+        .marshal(jsonDataFormat)
+        .to("log:Train data Transformed to JSON ${body}")
+        .to("amqp://queue:traindata-json?disableReplyTo=true");
     }
 
 }
