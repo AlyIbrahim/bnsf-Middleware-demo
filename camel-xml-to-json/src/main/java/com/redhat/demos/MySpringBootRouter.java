@@ -26,6 +26,13 @@ public class MySpringBootRouter extends RouteBuilder {
         
         JacksonDataFormat jsonDataFormat = new JacksonDataFormat(Train.class);
         jsonDataFormat.setPrettyPrint(true);
+
+        JaxbDataFormat xmlRailDataFormat = new JaxbDataFormat();
+		JAXBContext context = JAXBContext.newInstance(RailData.class);
+        xmlRailDataFormat.setContext(context);
+
+        JacksonDataFormat jsonRailDataFormat = new JacksonDataFormat(RailData.class);
+        jsonRailDataFormat.setPrettyPrint(true);
         
         from("amqp://traindata-xml")
         .unmarshal(xmlDataFormat)
@@ -33,6 +40,12 @@ public class MySpringBootRouter extends RouteBuilder {
         .marshal(jsonDataFormat)
         .to("log:Train data Transformed to JSON ${body}")
         .to("amqp://queue:traindata-json?disableReplyTo=true");
+
+        from("amqp://raildata-xml")
+        .unmarshal(xmlRailDataFormat)
+        .marshal(jsonRailDataFormat)
+        .to("log:Rail data Transformed to JSON ${body}")
+        .to("amqp://queue:raildata-json?disableReplyTo=true");
     }
 
 }
