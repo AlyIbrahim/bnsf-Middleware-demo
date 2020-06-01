@@ -1,4 +1,4 @@
-package com.redhat.demos;
+package com.example;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
