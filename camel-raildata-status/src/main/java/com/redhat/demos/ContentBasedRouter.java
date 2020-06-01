@@ -17,7 +17,8 @@ public class ContentBasedRouter extends RouteBuilder {
 
         .unmarshal().json().log("Rceived Raildata from Queue:  ${body}}")
         .choice()
-        .when(simple("${body['status']}"))
+        .when(simple("${body['yardid']} > 100"))
+        // .when(simple("${body['status']}"))
             .log("Status is true, Insert to DB").to("sql: insert into RAILDATA(yardid, yardname, railcarid, railcartype, linkid, linkfromstation, linktostation) " +
             " Values(:#${body['yardid']}, :#${body['yardname']}, :#${body['railcarid']}, :#${body['railcartype']}, :#${body['linkid']}, :#${body['linkfromstation']}, :#${body['linktostation']})")
         .otherwise()
