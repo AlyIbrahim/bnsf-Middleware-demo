@@ -1,24 +1,20 @@
 package com.redhat.demos;
 
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.stereotype.Component;
 
-/**
- * A simple Camel route that triggers from a timer and calls a bean and prints to system out.
- * <p/>
- * Use <tt>@Component</tt> to make Camel auto detect this route when starting.
- */
 @Component
 public class ContentBasedRouter extends RouteBuilder {
 
     @Override
     public void configure() {
-        from("amqp://raildata-json")
-
-        .unmarshal().json().log("Rceived Raildata from Queue:  ${body}}")
+        from("jms://queue:raildata-json?connectionFactory=#pooledJmsConnectionFactory")
+        .unmarshal().json(JsonLibrary.Jackson)
+        .log(LoggingLevel.INFO, "Rceived Raildata from Queue:  ${body}}")
         .choice()
         .when(simple("${body['yardid']} > 100"))
-        // .when(simple("${body['status']}"))
             .log("Status is true, Insert to DB").to("sql: insert into RAILDATA(yardid, yardname, railcarid, railcartype, linkid, linkfromstation, linktostation) " +
             " Values(:#${body['yardid']}, :#${body['yardname']}, :#${body['railcarid']}, :#${body['railcartype']}, :#${body['linkid']}, :#${body['linkfromstation']}, :#${body['linktostation']})")
         .otherwise()

@@ -30,49 +30,49 @@ public class RailData {
 	public int getYardid() {
 		return yardid;
     }
-	public void setYardid(int yardid) {
+	public void setYardid(final int yardid) {
 		this.yardid = yardid;
 	}
 	public String getYardname() {
 		return yardname;
 	}
-	public void setYardname(String yardname) {
+	public void setYardname(final String yardname) {
 		this.yardname = yardname;
 	}
 	public String getRailcarid() {
 		return railcarid;
 	}
-	public void setRailcarid(String railcarid) {
+	public void setRailcarid(final String railcarid) {
 		this.railcarid = railcarid;
 	}
 	public String getRailcartype() {
 		return railcartype;
 	}
-	public void setRailcartype(String railcartype) {
+	public void setRailcartype(final String railcartype) {
 		this.railcartype = railcartype;
 	}
 	public String getLinkid() {
 		return linkid;
 	}
-	public void setLinkid(String linkid) {
+	public void setLinkid(final String linkid) {
 		this.linkid = linkid;
 	}
 	public String getLinkfromstation() {
 		return linkfromstation;
 	}
-	public void setLinkfromstation(String linkfromstation) {
+	public void setLinkfromstation(final String linkfromstation) {
 		this.linkfromstation = linkfromstation;
 	}
 	public String getLinktostation() {
 		return linktostation;
 	}
-	public void setLinktostation(String linktostation) {
+	public void setLinktostation(final String linktostation) {
 		this.linktostation = linktostation;
 	}
 	public Boolean getStatus() {
 		return status;
 	}
-	public void setStatus(Boolean status) {
+	public void setStatus(final Boolean status) {
 		this.status = status;
 	}
     
