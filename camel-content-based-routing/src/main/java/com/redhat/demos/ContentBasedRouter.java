@@ -18,6 +18,7 @@ public class ContentBasedRouter extends RouteBuilder {
             .log("Status is true, Insert to DB").to("sql: insert into RAILDATA(yardid, yardname, railcarid, railcartype, linkid, linkfromstation, linktostation) " +
             " Values(:#${body['yardid']}, :#${body['yardname']}, :#${body['railcarid']}, :#${body['railcartype']}, :#${body['linkid']}, :#${body['linkfromstation']}, :#${body['linktostation']})")
         .otherwise()
+            .marshal().json(JsonLibrary.Jackson)
             .log("Status is false, Send to kafka")
             .to("kafka:raildata-status");
     }
