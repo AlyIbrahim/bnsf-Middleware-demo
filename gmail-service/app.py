@@ -46,7 +46,7 @@ def index():
         creds_file.close()
     except IOError:
         print("creds.json doesn't exist")
-        return flask.redirect(flask.url_for('refresh_token'))
+        return flask.redirect(flask.url_for('oauth2callback'))
   credentials = json.loads(flask.session['credentials'])
   if credentials['expires_in'] <= 0:
     logging.warn("Expired Token")
