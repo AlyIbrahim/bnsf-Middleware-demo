@@ -133,5 +133,4 @@ if __name__ == '__main__':
   import uuid
   app.secret_key = str(uuid.uuid4())
   load_creds()
-  app.debug = True
-  app.run()
+  app.run(port=8080)
